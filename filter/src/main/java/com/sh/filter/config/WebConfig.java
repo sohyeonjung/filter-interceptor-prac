@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         //들어오는 모든 주소(/**)에, openApiInteceptor 적용
-        registry.addInterceptor(openApilnterceptor)
-                .addPathPatterns("/**");
+//        registry.addInterceptor(openApilnterceptor)
+//                .addPathPatterns("/**");
     }
 }

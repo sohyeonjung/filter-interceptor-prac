@@ -19,6 +19,9 @@ public class UserApiController {
     ) {
         //log.info("{}",http.getBody());
         log.info(userRequest.toString());
+
+        //Returning throw 테스트
+        //throw new NumberFormatException("");
         return userRequest;
     }
 

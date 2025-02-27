@@ -2,6 +2,7 @@ package com.sh.simpleboard.reply.controller;
 
 
 import com.sh.simpleboard.reply.db.ReplyEntity;
+import com.sh.simpleboard.reply.model.ReplyDto;
 import com.sh.simpleboard.reply.model.ReplyRequest;
 import com.sh.simpleboard.reply.service.ReplyService;
 import jakarta.validation.Valid;
@@ -19,7 +20,7 @@ public class ReplyApiController {
     private final ReplyService replyService;
 
     @PostMapping("")
-    public ReplyEntity create(
+    public ReplyDto create(
             @Valid @RequestBody ReplyRequest replyRequest
             ){
         return replyService.create(replyRequest);

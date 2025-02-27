@@ -1,8 +1,11 @@
-package com.sh.simpleboard.reply.db;
+package com.sh.simpleboard.reply.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.sh.simpleboard.post.db.PostEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,25 +16,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @ToString
-@Entity(name = "reply")
-public class ReplyEntity {
+@JsonNaming(value = PropertyNamingStrategies.SnakeCaseStrategy.class)
+public class ReplyDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    //private Long postId;
-    @ManyToOne
-    @ToString.Exclude
-    @JsonIgnore
-    private PostEntity post;
-
+    private Long postId;
     private String userName;
     private String password;
     private String status;
     private String title;
-    @Column(columnDefinition = "TEXT")
     private String content;
     private LocalDateTime repliedAt;
-
 }

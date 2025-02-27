@@ -2,6 +2,7 @@ package com.sh.simpleboard.post.controller;
 
 
 import com.sh.simpleboard.common.Api;
+import com.sh.simpleboard.crud.CRUDAbstractApiController;
 import com.sh.simpleboard.post.db.PostEntity;
 import com.sh.simpleboard.post.model.PostDto;
 import com.sh.simpleboard.post.model.PostRequest;
@@ -19,36 +20,6 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/post")
-public class PostController {
+public class PostController extends CRUDAbstractApiController<PostDto, PostEntity> {
 
-    private final PostService postService;
-
-    @PostMapping("")
-    public PostDto create(
-            @Valid @RequestBody PostRequest postRequest
-    ){
-        return postService.create(postRequest);
-    }
-
-    @PostMapping("/view")
-    public PostDto view(
-            @Valid @RequestBody PostViewRequest postViewRequest
-    ){
-        return postService.view(postViewRequest);
-    }
-
-    @GetMapping("/all")
-    public Api<List<PostDto>> list(
-            @PageableDefault(page = 0, size = 10, sort ="id", direction = Sort.Direction.DESC)
-            Pageable pageable
-            ){
-        return postService.all(pageable);
-    }
-
-    @PostMapping("/delete")
-    public void delete(
-            @Valid @RequestBody PostViewRequest postViewRequest
-    ){
-         postService.delete(postViewRequest);
-    }
 }

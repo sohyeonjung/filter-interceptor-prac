@@ -48,7 +48,7 @@ public abstract class CRUDAbstractApiController<DTO, ENTITY> implements CRUDInte
         return crudAbstractService.update(dto);
     }
 
-    @DeleteMapping("")
+    @DeleteMapping("/id/{id}")
     @Override
     public void delete(
             @PathVariable
